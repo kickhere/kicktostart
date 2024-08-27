@@ -53,7 +53,8 @@ function Terminal() {
         newLines.push(randomFortune);
       } else if (currentInput.trim() === 'cmatrix') {
         setShowMatrix(true); // Start matrix effect
-        return;
+        newLines.push(`$ ${currentInput}`);
+        //return;
       } else if (currentInput.trim() === '') {
         newLines.push('$');
       } else {
