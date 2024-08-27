@@ -10,13 +10,24 @@ function Terminal() {
     ls: 'List directory contents',
     cat: 'Display the contents of a file',
     help: 'Show this help message',
-    clear: 'Clear the terminal screen'
+    clear: 'Clear the terminal screen',
+    fortune: 'Display a random fortune',
   };
 
   const files = ['README'];
 
   // Example content for the README file
   const readmeContent = `KickToStart. Real-time embedded and firmware consulting.\nandrew@kicktostart.com`;
+
+  // List of fortunes
+  const fortunes = [
+    "You will have a great day!",
+    "Good things come to those who wait.",
+    "Fortune favors the bold.",
+    "Patience is a virtue.",
+    "The early bird gets the worm.",
+    "Your hard work will soon pay off.",
+  ];
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
@@ -36,6 +47,10 @@ function Terminal() {
         newLines.push(helpMessage);
       } else if (currentInput.trim() === 'clear') {
         newLines = ['']; // Clear the terminal screen by resetting lines to a single empty string
+      } else if (currentInput.trim() === 'fortune') {
+        const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+        newLines.push(`$ ${currentInput}`);
+        newLines.push(randomFortune);
       } else if (currentInput.trim() === '') {
         newLines.push('$');
       } else {
